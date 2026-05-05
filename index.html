@@ -1,90 +1,250 @@
 <!doctype html>
-<html lang="en">
+<html lang="el">
 
 <head>
   <meta charset="utf-8" />
-  <title> Cinema</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Cinema Data Analysis | Final Thesis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --dark-bordeaux: #4a0404; 
+      --gold-accent: #b89550;
+      --bg-beige: #f4f1ea; 
+      --highlight-box: #e2d7c5; 
+    }
+
+    body {
+      background-color: var(--bg-beige);
+      margin: 0;
+      padding: 0;
+      font-family: 'Lora', serif;
+      line-height: 1.8;
+      color: var(--dark-bordeaux);
+    }
+
+    .top-bars {
+      display: flex;
+      width: 100%;
+      height: 60px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: var(--dark-bordeaux);
+      color: var(--bg-beige);
+    }
+    .bar-label { flex: 1; display: flex; align-items: center; padding-left: 30px; font-weight: bold; font-family: sans-serif; font-size: 0.85em; letter-spacing: 2px; text-transform: uppercase; }
+
+    header {
+      max-width: 850px;
+      margin: 60px auto 40px;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+
+    .lead {
+      font-size: 1.4em;
+      font-style: italic;
+      margin-bottom: 30px;
+      display: block;
+    }
+
+    .meta-info {
+      font-family: sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.9em;
+      border-top: 1px solid var(--dark-bordeaux);
+      border-bottom: 1px solid var(--dark-bordeaux);
+      padding: 15px 0;
+      display: block;
+    }
+
+    article {
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    p {
+      font-size: 1.25em;
+      margin-bottom: 30px;
+      text-align: justify;
+    }
+
+    .stats-highlight { font-weight: bold; color: var(--gold-accent); }
+
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 25px;
+      margin: 50px 0;
+    }
+
+    .tile {
+      background-color: var(--highlight-box);
+      padding: 40px 20px;
+      text-align: center;
+      border: 3px solid var(--dark-bordeaux);
+      font-weight: bold;
+      box-shadow: 10px 10px 0px var(--dark-bordeaux);
+    }
+
+    .img-container {
+      margin: 50px 0;
+      width: 100%;
+      border: 1px solid var(--dark-bordeaux);
+      padding: 5px;
+      background: white;
+    }
+    .img-container img { width: 100%; display: block; }
+    .caption { font-size: 0.9em; font-style: italic; text-align: center; margin-top: 10px; }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2em;
+      border-bottom: 3px solid var(--gold-accent);
+      padding-bottom: 10px;
+      margin-top: 60px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 30px 0;
+      background: white;
+      border: 2px solid var(--dark-bordeaux);
+    }
+    th { background: var(--dark-bordeaux); color: white; padding: 15px; text-align: left; }
+    td { padding: 15px; border-bottom: 1px solid var(--dark-bordeaux); font-weight: bold; }
+
+    .oval-box {
+      background-color: var(--highlight-box);
+      padding: 80px 40px;
+      margin: 60px 0;
+      text-align: center;
+      border: 3px solid var(--dark-bordeaux);
+      border-radius: 50% / 100px;
+    }
+    .oval-box h3 { font-family: 'Playfair Display', serif; font-size: 2em; font-style: italic; margin: 0; }
+
+    .best-movies-box {
+      background-color: var(--dark-bordeaux);
+      color: var(--bg-beige);
+      padding: 40px;
+      margin: 60px 0;
+      border-left: 10px solid var(--gold-accent);
+    }
+    .best-movies-box h3 { font-family: 'Playfair Display', serif; color: var(--gold-accent); font-size: 1.8em; margin-top: 0; }
+    .movie-list { list-style: none; padding: 0; }
+    .movie-list li { padding: 10px 0; border-bottom: 1px solid rgba(244,241,234,0.2); }
+
+    footer { background: var(--dark-bordeaux); color: var(--bg-beige); padding: 60px 20px; text-align: center; margin-top: 80px; }
+  </style>
 </head>
 
 <body>
 
-  <!-- ── PUBLICATION HEADER ── -->
-  <header class="site-header">
-    <p class="publication-name">Κινηματογράφος</p>
-    <p class="section-label">Κρητικη ταινιων</p>
+  <div class="top-bars">
+    <div class="bar-label">Data Journalism Project // The Cinema Dataset</div>
+  </div>
+
+  <header>
+    <h1>Η Γεωγραφία της Κινηματογραφικής Ποιότητας</h1>
+    <span class="lead">Μια στατιστική ακτινογραφία 667 ταινιών: Από τον κλασικό κανόνα στην ψηφιακή αυστηρότητα του 2026.</span>
+    <span class="meta-info">Ανάλυση Δεδομένων: Αθανασία Παπαδιώτη | 2026</span>
   </header>
 
-  <!-- ── ARTICLE ── -->
   <article>
+    <div class="img-container">
+      <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80" alt="Cinema">
+      <div class="caption">Η κινηματογραφική τέχνη ως ποσοτικό δεδομένο.</div>
+    </div>
 
-    <!-- Article header: headline, deck, byline -->
-    <header class="article-header">
-      <h1>Ο Κόσμος της Οθόνης</h1>
-      <p class="deck">Έδω θα βρείς όσα πρέπει να ξέρεις πριν πατήσεις το Play.</p>
-      <p class="byline">
-        <strong>By Athanasia Papadioti</strong>  · 
-        <time datetime="2026-03-29">29 March 2026</time>
-      </p>
-    </header>
+    <p>Στη συγκεκριμένη έρευνα πραγματοποιήθηκε μια εκτενής στατιστική ανάλυση σε ένα δείγμα <span class="stats-highlight">667 ταινιών</span>, το οποίο καλύπτει σχεδόν έναν αιώνα δημιουργίας. Το βασικό συμπέρασμα είναι πως η "ποιότητα" δεν κατανέμεται τυχαία, αλλά ακολουθεί συγκεκριμένα γεωγραφικά και ειδολογικά μοτίβα. Ενώ ο όγκος της παραγωγής αυξήθηκε ραγδαία τις τελευταίες δεκαετίες, η κριτική αποδοχή φαίνεται να ακολουθεί μια αντίστροφα ανάλογη πορεία.</p>
 
-    <!-- Hero image -->
-    <figure class="hero">
-      <img src="https://tse2.mm.bing.net/th/id/OIP.Uj8ouo0snRFklFqc1ISn_wAAAA?rs=1&pid=ImgDetMain&o=7&rm=3"
-        alt="Describe your photo here — who, what, where" />
-      <figcaption>
+    <div class="highlight-grid">
+      <div class="tile">ΙΑΠΩΝΙΑ<br><span style="font-size: 1.5em; color: var(--gold-accent);">5.0</span><br>Top Aesthetic</div>
+      <div class="tile">ΜΕΞΙΚΟ<br><span style="font-size: 1.5em; color: var(--gold-accent);">5.0</span><br>Surrealism Peak</div>
+      <div class="tile">ΠΟΛΩΝΙΑ<br><span style="font-size: 1.5em; color: var(--gold-accent);">4.8</span><br>Dramatic Depth</div>
+    </div>
 
-      </figcaption>
-    </figure>
+    <p>Όπως προκύπτει από τα δεδομένα, η <span class="stats-highlight">Ιαπωνία</span> και το <span class="stats-highlight">Μεξικό</span> παραμένουν οι αδιαφιλονίκητοι ηγέτες της ποιότητας με το απόλυτο <span class="stats-highlight">5.0</span>. Η <span class="stats-highlight">Πολωνία (4.8)</span> και η <span class="stats-highlight">Γερμανία (4.5)</span> συμπληρώνουν την ελίτ, αποδεικνύοντας ότι οι εθνικές σχολές με ισχυρή καλλιτεχνική ταυτότητα αντέχουν στην πίεση του χρόνου καλύτερα από τις μαζικές παραγωγές.</p>
 
-    <!-- Body text: section one -->
-    <section>
-      <p class="lead"></p> <strong>Ποιές ταινίες αξίζουν τον χρόνο σας και ποιές απογοήτευσαν; Κάνουμε μια αναδρομή
-        στις κορυφαίες και τις χαμηλότερες βαθμολογίες ανά έτος, ξεχωρίζοντας τα αριστουργήματα απο τις
-        αποτυχίες.</strong></p>
-      <p>Η κινηματογραφική βιομηχανία βιώνει μια από τις πιο παραγωγικές περιόδους της, με το 2025 να καταγράφεται η
-        χρονιά σταθμός για τις νέες κυκλοφορίες. Ωστόσο, η ποσότητα δεν συμβαδίζει πάντα με την αποδοχή, καθώς οι θεατές
-        αποδεικνύονται πιο αμείλικτοι από ποτέ.</p>
+    <h2>Η Παγίδα του Δράματος και η Κυριαρχία των Ειδών</h2>
+    <p>Η στατιστική επεξεργασία έφερε στο φως μια ενδιαφέρουσα αντίφαση. Το είδος του <strong>Δράματος</strong> κατέχει τη μερίδα του λέοντος στον όγκο των δεδομένων, καθώς από τις 667 ταινίες, οι περισσότερες ανήκουν σε αυτή την κατηγορία. Ωστόσο, η ποσότητα δεν μεταφράστηκε σε ποιότητα. Το Δράμα <span class="stats-highlight">απέτυχε να συγκινήσει στατιστικά</span> τους κριτικούς, συγκεντρώνοντας έναν μέσο όρο μόλις <span class="stats-highlight">3.9</span>.</p>
 
-      <p> Με τη αυστηρότητα του κρητικών να «χτυπάει κόκκινο», οι πρόσφατες ταινίες άφησαν μια γλυκόπικρη γεύση, με το
-        μέσο όρο να βρίσκεται κάτω από τη μέση (2,1/5). Στη κορυφή, εκεί που η ποιότητα συναντά το όραμα, ξεχώρισαν
-        δημιουργίες όπως η δραματική ταινία ο <strong> «Εθνικός Θησαυρός» </strong> με βαθμολογία 4/5 και το ντοκιμαντέρ
-        <strong> «Όργουελ:2+2=5» </strong>με βαθμολογία 3,5/5. Αυτές οι ταινίες κατάφεραν να περάσουν την μετριότητα,
-        προσφέροντας στο κοινό μια μαγευτική εμπειρία μέσα απο την κινηματογραφική οθόνη.
-      </p>
-      <p> Στον αντίποδα, η αποτυχία σκίασε αρκετές παραγωγές. Συνολικά 12 τίτλοι, αναμεσά τους και ταινίες με μεγάλες
-        προσδοκίες όπως η βιογραφική ταινια <strong> «Sinatra! Eternity» </strong> και το θρίλερ <strong> «Θα σε
-          σκοτώσουν</strong> καταλήγωντας σε παταγώδη αποτυχία. Ωστόσο το 2026 ξεκινά ηδη με μεγαλές προσδοκίες με τις
-        ταινίες <strong> «Michael» </strong> και <strong> «Mother Mary» </strong> να συζητιούνται αρκετά. Μένει να δούμε
-        αν η νέα χρόνια θα
-        καταφέρει να ανεβάσει το πήχη ή θα απογοητεύσει πάλι τους θεατές. </p>
-    </section>
+    <table>
+      <thead>
+        <tr>
+          <th>ΕΙΔΟΣ</th>
+          <th>ΜΕΣΗ ΒΑΘΜΟΛΟΓΙΑ</th>
+          <th>ΟΓΚΟΣ ΔΕΙΓΜΑΤΟΣ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Σινεφίλ / Art-house</td><td>4.8</td><td>Περιορισμένος</td></tr>
+        <tr><td>Φιλμ Νουάρ</td><td>4.6</td><td>Μεσαίος</td></tr>
+        <tr><td>Δράμα</td><td>3.9</td><td>Μέγιστος</td></tr>
+        <tr><td>Θρίλερ</td><td>2.1</td><td>Υψηλός</td></tr>
+      </tbody>
+    </table>
 
-    <!-- Pull quote -->
-    <blockquote class="pull-quote">
-      <p>Αριστούργημα ή αποτυχία; Η απόσταση κρίνεται στις λεπτομέρειες και στην ικανότητα να αγγίξει το κοινό. </p>
-    </blockquote>
+    <p>Αντίθετα, τα είδη <span class="stats-highlight">Σινεφίλ / Art-house (4.8)</span> και <span class="stats-highlight">Φιλμ Νουάρ (4.6)</span>, παρά τον μικρότερο αριθμό ταινιών, διατηρούν μια ελιτίστικη σταθερότητα. Οι κριτικοί φαίνεται να είναι πιο επιεικείς με είδη που πειραματίζονται οπτικά, ενώ τιμωρούν την "δραματική κοινοτοπία" των μεγάλων στούντιο.</p>
 
+    <div class="oval-box">
+      <h3>«Η στατιστική δεν αναιρεί τη μαγεία του σινεμά· απλώς χαρτογραφεί τα μονοπάτια της.»</h3>
+    </div>
 
-    <!--  box -->
-    <aside class="fact-box">
-      <p class="fact-box-title">Highlights</p>
-      <ul>
-        <li><strong>26 Πρεμιέρες το 2025:</strong> Η χρονιά με τη μεγαλύτερη κινηματογραφική δραστηριότητα,
-          καταγράφοντας ρεκόρ παραγωγής</li>
-        <li><strong> 13 Δραματικές Ταινίες:</strong> Το δράμα κυριαρχεί ως το πιο δημοφιλείς είδος, καλύπτοντας το
-          μεγαλύτερο μέρος της ανάλυσης</li>
-        <li><strong> 12 Αποτυχίες στη Βαθμολογία:</strong> Αν και η ποσότητα είναι μεγάλη, η ποιότητα δεν
-          ανταποκρίνεται στις προσδοκίες</li>
+    <h2>Η Κλιμάκωση της Αυστηρότητας (2016-2026)</h2>
+    <p>Μελετώντας την χρονική εξέλιξη των αξιολογήσεων, παρατηρούμε μια σαφή στροφή προς την αυστηρότητα. Το 2018 αποτέλεσε μια χρονιά-ορόσημο με μέσο όρο <span class="stats-highlight">3.00</span>. Ωστόσο, η τελευταία τριετία δείχνει μια πρωτοφανή πτώση. Το <span class="stats-highlight">2026</span>, η μέση βαθμολογία κατρακύλησε στο <span class="stats-highlight">1.45</span>, σημειώνοντας μια πτώση <span class="stats-highlight">52%</span>. Αυτό εξηγείται από το γεγονός ότι οι σύγχρονοι κριτικοί έχουν γίνει πιο απαιτητικοί, αναζητώντας την απόλυτη καινοτομία σε μια κορεσμένη αγορά.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ΕΤΟΣ</th>
+          <th>ΜΕΣΗ ΒΑΘΜΟΛΟΓΙΑ</th>
+          <th>ΤΑΣΗ ΚΡΙΤΙΚΗΣ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>2018</td><td>3.00</td><td>Ενθουσιώδης</td></tr>
+        <tr><td>2022</td><td>2.44</td><td>Σκεπτικιστική</td></tr>
+        <tr><td>2024</td><td>2.42</td><td>Αυστηρή</td></tr>
+        <tr><td>2026</td><td>1.45</td><td>Αμείλικτη</td></tr>
+      </tbody>
+    </table>
+
+    <p>Μέσα σε αυτό το κλίμα "απαξίωσης", η <span class="stats-highlight">Ελλάδα</span> καταφέρνει να διατηρήσει το κύρος της. Η σταθερή βαθμολογία του <span class="stats-highlight">4.0</span> για τον <strong>«Κυνόδοντα»</strong> αποδεικνύει ότι το ελληνικό "Weird Wave" προσφέρει μια οπτική γωνία που παραμένει φρέσκια και στατιστικά ανώτερη από τον διεθνή μέσο όρο των τελευταίων ετών.</p>
+
+    <div class="best-movies-box">
+      <h3>The Gold Standard (5.0)</h3>
+      <ul class="movie-list">
+        <li><strong>Ρώμη, Ανοχύρωτη Πόλη (1945)</strong> - Το απόλυτο σημείο αναφοράς.</li>
+        <li><strong>Εξολοθρευτής Άγγελος (1962)</strong> - Σουρεαλιστική τελειότητα.</li>
+        <li><strong>Το Πάθος της Ζαν ντ' Αρκ (1928)</strong> - Η δύναμη του βωβού σινεμά.</li>
+        <li><strong>Οδός Μαλχόλαντ (2001)</strong> - Σύγχρονη κινηματογραφική σπουδή.</li>
+        <li><strong>Toy Story (1995)</strong> - Η κορυφή του ψηφιακού animation.</li>
       </ul>
-    </aside>
+    </div>
 
+    <div class="img-container">
+      <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1200&q=80" alt="Old Film">
+      <div class="caption">Η ιστορική συνέχεια της ποιότητας.</div>
+    </div>
 
-    <!-- ── PAGE FOOTER ── -->
-    <footer class="page-footer">
-      <p>Data Journalism Project  ·  <time datetime="2026">2026</time></p>
-    </footer>
+  </article>
+
+  <footer>
+    <p><strong>CINEMA DATA PROJECT 2026</strong></p>
+    <p>Επιμέλεια: Αθανασία Παπαδιώτη | Στατιστική Ανάλυση 667 Ταινιών</p>
+  </footer>
 
 </body>
-
 </html>
