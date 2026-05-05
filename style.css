@@ -1,248 +1,162 @@
-/* ── Reset and base ── */
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-  }
+/* Καθαρισμός και Βάση */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
-    color: #222;
-    background: #fafafa;
-  }
+body {
+  background-color: #FFFBF0;
+  /* Ivory Whisper φόντο */
+  color: #1a1a1a;
+  font-family: 'Georgia', serif;
+  font-size: 17px;
+  line-height: 1.7;
+  padding: 0 0 100px 0;
+  background-image: linear-gradient(135deg, #FFFBF0 0%, #F5F5DC 100%);
+}
 
-  /* ── Publication header ── */
-  .site-header {
-    border-top: 4px solid #800020;
-    border-bottom: 1px solid #e0e0e0;
-    padding: 14px 24px;
-    display: flex;
-    align-items: baseline;
-    gap: 16px;
-  }
+/* Header & Logo στυλ Hardgraft */
+header {
+  padding: 60px 40px;
+  text-align: center;
+  background-color: transparent;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-  .publication-name {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.2em;
-    font-weight: bold;
-    margin: 0;
-    letter-spacing: -0.01em;
-  }
+.publication-name {
+  font-family: 'Times New Roman', serif;
+  font-size: 50px;
+  font-weight: 900;
+  line-height: 0.8;
+  letter-spacing: -3px;
+  text-transform: lowercase;
+  margin-bottom: 20px;
+  color: #53161D;
+  background-image: url('https://i.pinimg.com/1200x/09/77/a1/0977a10d44d1761a92aeb5e0be5ce0c5.jpg');
+  background-size: 200%;
+  background-position: center;
+}
 
-  .section-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #666;
-    margin: 0;
-  }
+.section-label {
+  font-size: 18px;
+  color: #53161D;
+  border-bottom: 1px solid #53161D;
+  padding-bottom: 20px;
+  background-image: url('https://i.pinimg.com/1200x/09/77/a1/0977a10d44d1761a92aeb5e0be5ce0c5.jpg');
+  background-size: 200%;
+  background-position: center;
+}
 
-  /* ── Article layout ── */
-  article {
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 0 24px 60px;
-  }
+/* Κεντρική Εικόνα (Cinema Art) */
+.hero {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 60px auto;
+  position: relative;
+}
 
-  /* ── Article header ── */
-  .article-header {
-    padding: 36px 0 0;
-    border-bottom: 1px solid #e0e0e0;
-    margin-bottom: 24px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  }
+.hero img {
+  width: 100%;
+  display: block;
+}
 
-  h1 {
-    font-size: 2.4em;
-    font-weight: 700;
-    line-height: 1.1;
-    margin: 0 0 14px;
-    letter-spacing: -0.025em;
-    font-family: 'Roboto', sans-serif;
-  }
+/* Περιεχόμενο (Το κείμενο από το screenshot σου) */
+article {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
 
-  .deck {
-    font-size: 1.1em;
-    line-height: 1.5;
-    color: #444;
-    margin: 0 0 16px;
-    font-style: italic;
-  }
+.article-header {
+  margin-bottom: 40px;
+}
 
-  .byline {
-    font-size: 13px;
-    font-family: Arial, Helvetica, sans-serif;
-    letter-spacing: 0.05em;
-    color: #888;
-    margin: 0 0 20px;
-  }
+.article-header h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+  color: #53161D;
+  font-family: 'Times New Roman', serif;
+  border-bottom: 2px solid #53161D;
+  padding-bottom: 10px;
+  /* Bordeaux Velvet για τους τίτλους */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-  /* ── Hero image ── */
-  .hero {
-    margin: 0 -24px 28px;
-  }
+.article-header .deck {
+  font-size: 18px;
+  font-style: italic;
+  color: #888;
+  margin-bottom: 20px;
+}
 
-  .hero img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
+.article-header .byline {
+  font-size: 14px;
+  color: #888;
+}
 
-  .hero figcaption {
-    font-size: 0.8em;
-    color: #777;
-    line-height: 1.5;
-    padding: 8px 24px 0;
-    font-family: Arial, Helvetica, sans-serif;
-  }
+section p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  text-align: justify;
+  font-family: 'Times New Roman', serif;
+}
 
-  .credit {
-    display: block;
-    color: #aaa;
-    margin-top: 2px;
-  }
+.lead {
+  font-weight: bold;
+}
 
-  /* ── Body text ── */
-  section {
-    margin-bottom: 8px;
-  }
+.pull-quote {
+  font-size: 24px;
+  font-style: italic;
+  text-align: center;
+  margin: 50px 0;
+  padding: 20px;
+  border-left: 5px solid #53161D;
+  background-color: #FFFBF0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-  p {
-    margin: 0 0 22px;
-  }
+.fact-box {
+  background-color: #FFFBF0;
+  color: #1a1a1a;
+  padding: 40px;
+  margin: 50px 0;
+  border-radius: 10px;
+  border-left: 5px solid #53161D;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-  .lead {
-    font-size: 1.05em;
-    font-weight: 600;
-    line-height: 1.7;
-  }
+.fact-box-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #53161D;
+  font-family: 'Times New Roman', serif;
+}
 
-  h2 {
-    font-size: 1.25em;
-    font-weight: 700;
-    margin: 36px 0 10px;
-    padding-top: 28px;
-    border-top: 1px solid #e0e0e0;
-    letter-spacing: -0.01em;
-    font-family: 'Roboto', sans-serif;
-  }
+.fact-box ul {
+  list-style: none;
+  padding: 0;
+}
 
-  a {
-    color: #800020;
-    text-underline-offset: 3px;
-  }
+.fact-box li {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #53161D;
+  border-radius: 5px;
+  background-color: #FFFBF0;
+}
 
-  a:hover {
-    color: #a0002a;
-  }
+.fact-box strong {
+  color: #53161D;
+}
 
-  /* ── Pull quote ── */
-  .pull-quote {
-    border-top: 2px solid #800020;
-    border-bottom: 2px solid #800020;
-    margin: 32px 0;
-    padding: 20px 0;
-    text-align: center;
-  }
-
-  .pull-quote p {
-    font-size: 1.3em;
-    line-height: 1.4;
-    font-style: italic;
-    font-family: 'Georgia', serif;
-    margin: 0 0 12px;
-    letter-spacing: -0.01em;
-  }
-
-  .pull-quote footer {
-    font-size: 0.82em;
-    font-family: Arial, Helvetica, sans-serif;
-    letter-spacing: 0.05em;
-    color: #666;
-  }
-
-  /* ── Fact box ── */
-  .fact-box {
-    background: #e0e0e0;
-    border-left: 3px solid #800020;
-    padding: 16px 20px;
-    margin: 28px 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-
-  .fact-box-title {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #333;
-    margin: 0 0 10px;
-  }
-
-  .fact-box ul {
-    margin: 0;
-    padding-left: 18px;
-    font-size: 0.92em;
-    line-height: 1.65;
-  }
-
-  .fact-box li {
-    margin-bottom: 5px;
-  }
-
-  /* ── Embeds ── */
-  figure {
-    margin: 24px 0;
-  }
-
-  figure iframe {
-    display: block;
-  }
-
-  figcaption {
-    font-size: 0.8em;
-    color: #888;
-    margin-top: 6px;
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.5;
-  }
-
-  /* ── Article footer ── */
-  .article-footer {
-    border-top: 1px solid #e0e0e0;
-    margin-top: 40px;
-    padding-top: 18px;
-    font-size: 0.83em;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #666;
-  }
-
-  .tags a {
-    color: #800020;
-    text-decoration: none;
-  }
-
-  .tags a:hover {
-    text-decoration: underline;
-  }
-
-  .corrections {
-    margin-top: 8px;
-    color: #666;
-  }
-
-  /* ── Page footer ── */
-  .page-footer {
-    text-align: center;
-    border-top: 1px solid #e0e0e0;
-    padding: 28px 24px;
-    font-size: 13px;
-    color: #666;
-    font-family: Arial, Helvetica, sans-serif;
-  }
+/* Page Footer */
+.page-footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  margin-top: 60px;
+}
